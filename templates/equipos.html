@@ -1,0 +1,47 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %} 
+
+
+
+<h1>Buscador de un Equipo</h1>
+<input type="text" id="consulta" placeholder="Ingrese su búsqueda">
+<ul id="resultados"></ul>
+
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#consulta').keyup(function(){
+            var consulta = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '/buscar_equipos',
+                data: {'consulta': consulta},
+                success: function(response){
+                    mostrarResultados(response);
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+    function mostrarResultados(resultados){
+        var listaResultados = $('#resultados');
+        listaResultados.empty();
+        if (resultados.length > 0) {
+            $.each(resultados, function(index, resultado){
+                listaResultados.append('<li>' + resultado + '</li>');
+            });
+        } else {
+            listaResultados.append('<li>No se encontraron resultados</li>');
+        }
+    }
+</script>
+
+
+
+{% endblock %}

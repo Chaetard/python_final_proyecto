@@ -1,0 +1,34 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %}
+
+
+
+<div class="container">
+    <h2>Reservar Equipo</h2>
+    <form method="post">
+        
+        <div class="form-group">
+            <label for="id_type">Equipo:</label>
+            <select class="optionType" name="id_type">
+                {% for equi in equip %}
+                <option class="optionType" value="{{ equi['id_equipment'] }}" >{{ equi['model'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="day">Día:</label>
+            <input type="date" class="form-control" id="day" name="day" required>
+        </div>
+        <div class="form-group">
+            <label for="time_start">Hora de inicio:</label>
+            <input type="time" class="form-control" id="time_start" name="time_start" required>
+        </div>
+        <div class="form-group">
+            <label for="time_end">Hora de fin:</label>
+            <input type="time" class="form-control" id="time_end" name="time_end" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Reservar Equipo</button>
+    </form>
+</div>
+
+{% endblock %}

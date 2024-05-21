@@ -1,0 +1,60 @@
+{% extends "main.html" %} 
+{% block titulo %} Panel Usuarios {% endblock %}
+{% block contenido %}
+
+<div class="container text-center">
+  <h1 class="text-center">Buscador de una sala</h1>
+
+  <div class="row justify-content-center">
+    <label for="consulta" class="col-md-4 col-form-label">Ingrese el nombre de la sala</label>
+    <div class="col-md-6">
+      <input type="text" id="consulta" class="form-control" placeholder="Ingrese el nombre" />
+    </div>
+  </div>
+
+  <br>
+
+  <ul id="resultados" class="contenedorResultados"></ul>
+
+  <script>
+    $(document).ready(function () {
+      $("#consulta").keyup(function () {
+        var consulta = $(this).val();
+        $.ajax({
+          type: "POST",
+          url: "/buscar_salas",
+          data: { consulta: consulta },
+          success: function (response) {
+            mostrarResultados(response);
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      });
+    });
+
+    function mostrarResultados(resultados) {
+      var listaResultados = $("#resultados");
+      listaResultados.empty();
+      if (resultados.length > 0) {
+        $.each(resultados, function (index, resultado) {
+          var disponibilidad = resultado.available 
+            ? "<span class='btn btn-success aviso '>Disponible</span>" 
+            : "<span class='btn btn-warning aviso '>No Disponible</span>";
+          listaResultados.append(
+            "<li class='list-group-item d-flex justify-content-between align-items-center listaR'>" 
+            + resultado.name_room 
+            + disponibilidad 
+            + "</li>"
+          );
+        });
+      } else {
+        listaResultados.append("<li class='list-group-item'>No se encontraron resultados</li>");
+      }
+    }
+  </script>
+</div>
+
+{% endblock %}
+

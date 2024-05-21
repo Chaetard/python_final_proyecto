@@ -1,0 +1,39 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %} {%
+block contenido %}
+
+<h1>Mis reservaciones</h1>
+
+<div class="container text-center">
+  <div class="row bg-danger listasReser">
+    <div class="col-2">Hora</div>
+    <div class="col-2">Fecha</div>
+    <div class="col-2">Tipo</div>
+
+    <div class="col-2">Cancelar</div>
+  </div>
+
+  <br />
+  <div class="bg-success listasReser">
+    {% for reservation in reservations %}
+
+    <div class="row">
+      <div class="col-2">{{ reservation['beginning'] }}</div>
+      <div class="col-2">{{ reservation['booking_time'] }}</div>
+      <div class="col-2">{{ reservation['type'] }}</div>
+
+      {% if reservation['estado'] == 'finalizado' or reservation['estado'] ==
+      'reservado' %}
+      <a
+        class="col-2 m-1 btn btn-warning"
+        href="/cancelar-reserva/{{reservation['id_reservations'] }}"
+        >Cancelar</a
+      >
+      {% else %}
+      <div class="col-2 m-1">No se puede cancelar</div>
+      {% endif %}
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

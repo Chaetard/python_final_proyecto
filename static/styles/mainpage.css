@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white !important;
+}
+h1{
+  color: white !important;
+}
+
+
+.userText{
+  font-size: 20px !important;
+  padding-right: 20px !important;
+}
+.opciones{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.opciones > h1{
+  color: black !important;
+  font-size: 30px;
+}
+.imgLogo{
+  height: 140px;
+  margin: 30px;
+}
+input{
+  color: black !important;
+}
+.estadistica1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  border-radius: 10px;
+}
+
+
+.opcionesAdmin{
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.opcionesAdmin > h1{
+  
+  font-size: 30px;
+}
+
+.listasReser{
+  font-size: 20px;
+  border-radius: 10px;  
+}
+.listadoAjax{
+  text-decoration: none;
+  list-style: none !important;
+  text-align: left !important;
+  margin: 10px;
+}
+.contenedorResultados{
+  border-radius: 10px;
+  background-color: rgba(114, 12, 12, 0.616);
+  padding: 10px;
+}
+.listaR{
+  margin: 10px;
+
+}
+.aviso{
+  width: 20vw;
+  pointer-events: none;
+}
+.optionType{
+  color: black !important;
+}

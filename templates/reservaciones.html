@@ -1,0 +1,27 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %}
+
+<div class="container text-center">
+  <div class="row bg-danger listasReser">
+    <div class="col-3 p-2">ID</div>
+    <div class="col-3 p-2">Hora</div>
+    <div class="col-3 p-2">Usuario</div>
+    <div class="col-3 p-2">Tipo</div>
+  </div>
+
+  <br />
+  <div class="bg-success listasReser">
+    {% for reservation in reservations %}
+
+    <div class="row">
+      <div class="col-3 p-2">{{ reservation['id_reservations'] }}</div>
+      <div class="col-3 p-2">{{ reservation['booking_time'] }}</div>
+      <div class="col-3 p-2">{{reservation['user'] }}</div>
+      <div class="col-3 p-2">{{ reservation['type']}}</div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

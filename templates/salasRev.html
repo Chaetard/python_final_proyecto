@@ -1,0 +1,33 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %}
+
+
+<div class="container">
+    <h2>Reservar Sala</h2>
+    <form method="post">
+        
+        <div class="form-group">
+            <label for="id_type">Sala:</label>
+            <select class="optionType" name="id_type">
+                {% for room in rooms %}
+                <option class="optionType" value="{{ room['id_room'] }}" >{{ room['name_room'] }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="day">Día:</label>
+            <input type="date" class="form-control" id="day" name="day" required>
+        </div>
+        <div class="form-group">
+            <label for="time_start">Hora de inicio:</label>
+            <input type="time" class="form-control" id="time_start" name="time_start" required>
+        </div>
+        <div class="form-group">
+            <label for="time_end">Hora de fin:</label>
+            <input type="time" class="form-control" id="time_end" name="time_end" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Reservar Sala</button>
+    </form>
+</div>
+
+{% endblock %}

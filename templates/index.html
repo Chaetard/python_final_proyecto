@@ -1,0 +1,37 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %}
+
+<div class="container-fluid text-center">
+  <div class="row flex-nowrap mx-1">
+    <a href="/reservar-sala" class="col-md-6 m-1 btn bg-info opciones">
+      <h1>Reservar una sala</h1>
+      <img
+        src="{{ url_for('static', filename='img2.svg') }}"
+        alt="sala"
+        class="img-fluid imgLogo"
+      />
+    </a>
+    <a href="/reservar-equipo"  class="col-md-6 m-1 btn bg-info opciones">
+      <h1>Reservar un equipo</h1>
+      <img
+        src="{{ url_for('static', filename='img1.svg') }}"
+        alt="sala"
+        class="img-fluid imgLogo"
+      />
+    </a>
+  </div>
+  <div class="row flex-nowrap mx-1">
+    <div class="col-md-6 m-1  estadistica1 {{ "bg-success" if (sumAvailableRooms / sumRooms * 100) > 30 else "bg-danger" }}">
+      <h2>
+         {{ "%.0f" | format(sumAvailableRooms / sumRooms * 100) }}% de las salas estan disponibles ahora
+      </h2>
+    </div>
+    <div class="col-md-6 m-1  estadistica1 {{ "bg-success" if (sumAvailableComputer / sumComputer * 100) > 30 else "bg-danger" }}">
+      <h2>
+         {{ "%.0f" | format(sumAvailableComputer / sumComputer * 100) }}% de los equipos estan disponibles ahora
+      </h2>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

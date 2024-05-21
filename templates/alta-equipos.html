@@ -1,0 +1,14 @@
+{% extends "main.html" %} {% block titulo %} Panel Usuarios {% endblock %}
+{%block contenido %}
+
+
+<h1>Alta de un equipo</h1>
+
+<form method="post" class="container">
+    <label>Modelo: </label><input type="text" name="model">
+    <label>Serial: </label><input type="number" name="serial">
+    <button type="submit" class="btn btn-success">Dar de Alta</button>
+</form>
+
+
+{% endblock %}
